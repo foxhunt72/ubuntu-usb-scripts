@@ -39,10 +39,10 @@ done
 
 for i in proc sys dev
 do
-  umount ${CHROOT_DIR}/${i}
-  umount -l ${CHROOT_DIR}/${i}
+  umount ${CHROOT_DIR}/${i} 2>/dev/null
+  umount -l ${CHROOT_DIR}/${i} 2>/dev/null
 
-  if ! df "${CHROOT_DIR}/${i}" | grep "${CHROOT_DIR}$"; then
+  if ! df "${CHROOT_DIR}/${i}" | grep "${CHROOT_DIR}$"i >/dev/null; then
 	echo "ERROR: $i is still mounted on ${CHROOT_DIR}/${i}"
 	exit 1
   fi
