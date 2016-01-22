@@ -54,5 +54,6 @@ done
 
 # compress the chroot
 mksquashfs ${CHROOT_DIR} ${CASPER_NEW_DIR}/filesystem.squashfs
+rsync --ignore-existing -avP "${CASPER_DIR}/" "${CASPER_NEW_DIR}/"
 printf $(sudo du -sx --block-size=1 ${CASPER_NEW_DIR} | cut -f1) > ${CASPER_NEW_DIR}/filesystem.size
 

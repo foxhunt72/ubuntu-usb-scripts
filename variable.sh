@@ -6,4 +6,4 @@ export CASPER_NEW_DIR=/cdrom/casper-new
 
 export CDROM_RO="/cdrom"
 export CDROM_RW="/cdromrw"
-export ISO_FILE="/root/ubuntu.iso"
+export ISO_FILE="/tmp/ubuntu.iso"

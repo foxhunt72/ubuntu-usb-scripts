@@ -12,6 +12,10 @@ boot from a ubuntu usbstick
 ### or use kvm, if youre usb stick is not /dev/sdb  change that
 sudo qemu-system-x86_64 -cpu qemu64,+vmx -smp cores=2,threads=1,sockets=1 -enable-kvm -hda /dev/sdb -m 1024 -boot c
 
+## or with a iso
+
+sudo qemu-system-x86_64 -cpu qemu64,+vmx -smp cores=2,threads=1,sockets=1 -enable-kvm -cdrom "iso_file" -m 4096 -boot d
+
 
 In the ubuntu live usb do the following actions
 
@@ -32,8 +36,15 @@ cd ubuntu-usb-scripts
 
 exit    # out of the chroot
 
-# create a new squashfs directory with al the customization that you did in the chroot
+# create a new squashfs directory with al the customization that you did in the chroot if using a usb disk
 ./create_squash.sh
+# rename casper to casper.old or and casper.new to casper
+
+# if you use a iso you don't need to use the create_squash.sh
+
+./create_new_cdrom_iso.sh
+
+
 
 
 
