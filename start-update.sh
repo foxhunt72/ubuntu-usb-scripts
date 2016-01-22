@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. variable.sh
+. ./variable.sh
 
 mkdir "${CHROOT_DIR}"
 mkdir /mnt/ramdir

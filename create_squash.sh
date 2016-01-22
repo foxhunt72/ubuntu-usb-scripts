@@ -1,6 +1,15 @@
 #!/bin/bash
 
-. variable.sh
+. ./variable.sh
+
+if [ -n "$1" ]; then
+  export CASPER_NEW_DIR="$1"
+fi
+
+if ! [ -f /usr/bin/mksquashfs ]; then
+  apt-get install squashfs-tools -y
+fi
+
 
 ####
 # usb drive writable
@@ -12,6 +21,13 @@ if test -d "${CASPER_NEW_DIR}"; then
 fi
 
 mkdir "${CASPER_NEW_DIR}"
+
+if ! [ -d "${CASPER_NEW_DIR}" ]; then
+  echo "can't create $CASPER_NEW_DIR"
+  echo "posible readonly media."
+  echo "Change dir with $0 [alternative_dir]"
+  exit 1
+fi
 
 chroot ${CHROOT_DIR} dpkg-query -W --showformat='${Package} ${Version}\n' | tee ${CASPER_NEW_DIR}/filesystem.manifest
 cp -v ${CASPER_NEW_DIR}/filesystem.manifest ${CASPER_NEW_DIR}/filesystem.manifest-desktop
