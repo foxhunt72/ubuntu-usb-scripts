@@ -22,4 +22,8 @@ if test -f "${CDROM_RW}/casper/filesystem.squashfs"; then
 	echo "create iso"
 	cd "${CDROM_RW}"
 	mkisofs -D -r -V "${CD_TITLE:-Ubuntu}" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o "$ISO_FILE" .
+	echo ""
+	echo "if everything went well, you have a iso in $ISO_FILE"
+	echo "use scp to copy it to a save location"
+	echo ""
 fi
