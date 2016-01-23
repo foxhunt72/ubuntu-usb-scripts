@@ -8,11 +8,11 @@ fi
 
 
 mkdir "${CDROM_RW}"
-mkdir /mnt/ramdir2
-mkdir /mnt/ramdir2_b
+mkdir /tmp/ramdir2
+mkdir /tmp/ramdir2_b
 
 # this doesn't work like expected. So remove for now
-# mount -t overlayfs -o lowerdir="${CDROM_RO}" -o upperdir=/mnt/ramdir2 -o workdir="/mnt/ramdir2_b" none "${CDROM_RW}"
+# mount -t overlayfs -o lowerdir="${CDROM_RO}" -o upperdir=/tmp/ramdir2 -o workdir="/tmp/ramdir2_b" none "${CDROM_RW}"
 # rm -rf "${CDROM_RW}/casper"
 
 ./create_squash.sh "${CDROM_RW}/casper"

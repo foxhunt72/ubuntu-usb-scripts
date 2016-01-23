@@ -29,6 +29,8 @@ if ! [ -d "${CASPER_NEW_DIR}" ]; then
   exit 1
 fi
 
+rm -rf "${CHROOT_DIR}"/var/cache/apt/*
+
 chroot ${CHROOT_DIR} dpkg-query -W --showformat='${Package} ${Version}\n' | tee ${CASPER_NEW_DIR}/filesystem.manifest
 cp -v ${CASPER_NEW_DIR}/filesystem.manifest ${CASPER_NEW_DIR}/filesystem.manifest-desktop
 REMOVE='ubiquity ubiquity-frontend-gtk ubiquity-frontend-kde casper lupin-casper live-initramfs user-setup discover1 xresprobe os-prober libdebian-installer4'
